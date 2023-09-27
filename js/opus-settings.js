@@ -7,7 +7,8 @@
                 if (r.success) {
                     alert('Vellykket tilkobling til API. Løsningen er klar til bruk, men vi anbefaler å fylle ut innstillingene for backupløsning også i tilfelle nedetid.');
                 } else {
-                    alert('Kunne ikke koble til, sjekk at du har riktige innstillinger. Hvis du er sikker på at innstillingene er riktige, må du kontakte opus og sjekke at tjenesten er aktivert');
+                    console.log(r);
+                    alert('Kunne ikke koble til, sjekk at du har riktige innstillinger. Hvis du er sikker på at innstillingene er riktige, må du kontakte opus og sjekke at tjenesten er aktivert. Du kan sjekke konsollen for å se hva som ble returnert fra server.');
                 }
             });
         });
