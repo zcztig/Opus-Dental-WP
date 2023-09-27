@@ -87,7 +87,7 @@
     <label for="FreeTextMessage">Beskjed til klinikken (valgfri)</label>
     <textarea class="form-control" name="FreeTextMessage" id="FreeTextMessage" rows="4"></textarea>
     <label for="privacy-consent">
-        <input type="checkbox" name="privacy-consent" id="privacy-consent" required> Jeg samtykker til at personopplysningene jeg sender inn her kan behandles i tråd med Trondheim Tannlegesenter sin personvernerklæring.
+        <input type="checkbox" name="privacy-consent" id="privacy-consent" required> Jeg samtykker til at personopplysningene jeg sender inn her kan behandles i tråd med <?= get_bloginfo('name') ?> sin personvernerklæring.
         <div class="invalid-feedback">
             Dette må godkjennes for å bestille time på nett
         </div>
