@@ -1,0 +1,152 @@
+.table-listings {
+    display: block;
+}
+
+.table-listing {
+    display: block;
+    border: 1px solid #e6e6e6;
+    margin: 3px 0;
+    padding: 15px;
+}
+
+.table-listing:hover {
+    background: #fff;
+    cursor: pointer;
+}
+
+.booking-calendar {
+    float: left;
+}
+
+.booking-events {
+    float: left;
+    width: 435px;
+    max-width: 100%;
+    margin: 10px 20px 10px 5px;
+
+    .title {
+        padding: 5px 0px;
+        text-align: center;
+        font-weight: bold;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    }
+
+    .subtitle {
+        padding: 5px 0px;
+        font-size: 14px;
+        text-align: center;
+        color: #888;
+    }
+
+    .list {
+        overflow-y: auto;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+        .event-item {
+            background: black; //fallback
+            background: var(--wp--preset--color--secondary);
+            font-size: large;
+            color: #fff;
+            padding: 10px !important;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+    }
+}
+
+.clear {
+    clear: both;
+}
+
+.opus-grid {
+    display: block;
+    @media (min-width: 782px) {
+        display: flex;
+        display: -webkit-flex;
+        gap: 3em;
+
+        .col {
+            flex: 1;
+        }
+
+        .col-2 {
+            flex: 2;
+        }
+
+        .col-3 {
+            flex: 3;
+        }
+    }
+
+    &.mobile {
+        display: flex;
+        display: -webkit-flex;
+        gap: 3em;
+
+        .col {
+            flex: 1;
+        }
+
+        .col-2 {
+            flex: 2;
+        }
+
+        .col-3 {
+            flex: 3;
+        }
+    }
+}
+
+.opus-input {
+    display: block;
+    margin: auto;
+    width: 90%;
+    border: 1px solid var(--wp--preset--color--secondary);
+
+    &:focus {
+        border: 1px solid var(--wp--preset--color--primary);
+    }
+
+    @media (min-width: 782px) {
+        width: 100%;
+    }
+}
+
+.custom-button {
+    border: 1px solid;
+    padding: 10px;
+    text-decoration: none;
+}
+
+
+// Required Bootstrap import
+@import "../node_modules/bootstrap/scss/functions";
+
+//vars
+$prefix: "opus-";
+.accordion {
+    --#{$prefix}accordion-body-padding-y: 2em;
+}
+$accordion-icon-color:                    #fff;
+$accordion-icon-active-color:             #fff;
+$accordion-icon-transform:                none;
+$accordion-button-active-icon: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64zM337 209L209 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L303 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>');
+
+// Required Bootstrap imports
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+// Optional Bootstrap imports
+@import "../node_modules/bootstrap/scss/forms";
+@import "../node_modules/bootstrap/scss/accordion";
+@import "../node_modules/bootstrap/scss/transitions";
+@import "../node_modules/bootstrap/scss/button-group";
+@import "../node_modules/bootstrap/scss/buttons";
+
+@media (max-width: 782px) {
+    .form-control {
+        max-width: 90%;
+    }
+}

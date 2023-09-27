@@ -1,0 +1,57 @@
+.booking-calendar {
+    float: left;
+}
+
+.booking-events {
+    float: left;
+    width: 435px;
+    max-width: 100%;
+    margin: 10px 20px 10px 5px;
+
+    .title {
+        padding: 5px 0px;
+        text-align: center;
+        font-weight: bold;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    }
+
+    .subtitle {
+        padding: 5px 0px;
+        font-size: 14px;
+        text-align: center;
+        color: #888;
+    }
+
+    .list {
+        overflow-y: auto;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+
+        .event-item {
+            background: black; //fallback
+            background: var(--wp--preset--color--secondary);
+            font-size: large;
+            color: #fff;
+            padding: 10px !important;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+    }
+}
+
+.clear {
+    clear: both;
+}
+
+.flex-grid {
+    @media (min-width: 782px) {
+        display: flex;
+        .col {
+            flex: 1;
+            &:not(:last-child) {
+                margin-right: 1em;
+            }
+        }
+    }
+}
+
+@import "bootstrap";
