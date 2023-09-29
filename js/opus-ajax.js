@@ -62,82 +62,83 @@
     $.post(ajax.url, send, function(r) {
       console.log('Dette får vi i retur');
       console.log(r);
-      if (r.data.dates = false) {
-        return;
-      }
-      $('#form-hours').html(r.data.html.calendar);
-      var elements = {
-        calendar: $('.booking-calendar')[0],
-        events: $('.booking-events')[0]
-      };
-      console.log(elements);
-      elements.title = document.createElement("div");
-      elements.title.className = "title";
-      elements.events.appendChild(elements.title);
-      elements.subtitle = document.createElement("div");
-      elements.subtitle.className = "subtitle";
-      elements.events.appendChild(elements.subtitle);
-      elements.list = document.createElement("div");
-      elements.list.className = "list";
-      elements.events.appendChild(elements.list);
-      calendar = jsCalendar.new(elements.calendar, r.data.dates[0], {
-        "navigatorPosition": "right",
-        "monthFormat": "month YYYY",
-        "dayFormat": "DDD",
-        "firstDayOfTheWeek": "2",
-        "language": "no"
-      });
-      calendar.select(r.data.dates);
-      var events = r.data.hours;
-      var date_format = "DD/MM/YYYY";
-      var showEvents = function(date){
-        // Date string
-        var id = jsCalendar.tools.dateToString(date, date_format, "no");
-        // Set date - allerede satt
-        //current = new Date(date.getTime());
-        // Set title
-        elements.title.textContent = id;
-        // Clear old events
-        elements.list.innerHTML = "";
-        // Add events on list
-        if (events.hasOwnProperty(id) && events[id].length) {
-          // Number of events
-          elements.subtitle.textContent = events[id].length + " " + ((events[id].length > 1) ? "ledige timer" : "ledig time");
-          var div;
-          var link;
-          // For each event
-          for (var i = 0; i < events[id].length; i++) {
-            div = document.createElement("div");
-            link = document.createElement("span");
-            div.dataset.starttime = events[id][i].returnvalue;
-            div.className = "event-item";
-            //div.textContent = (i + 1) + ". " + events[id][i].formatted;
-            div.textContent = events[id][i].formatted;
-            link.textContent = 'Velg tidspunkt';
-            link.style.float = 'right';
-            elements.list.appendChild(div);
-            div.appendChild(link);
-          }
-        } else {
-          elements.subtitle.textContent = "Ingen ledige timer";
-        }
-      };
-      showEvents(jsCalendar.tools.stringToDate(r.data.dates[0]));
-      calendar.onDateClick(function (e, d) {
-        showEvents(d);
-        if (calendar.isSelected(d)) {
-          calendar.set(d);
-          $('[data-date="' + jsCalendar.tools.dateToString(d, 'DD/MM/yyyy') + '"]').show();
-        }
-      });
-      calendar.onMonthChange(function (event, date) {
-        send.date = date.toISOString();
-        $.post(ajax.url, send, function (re) {
-          calendar.select(re.data.dates);
-          calendar.set(re.data.dates[0]);
-          showEvents(jsCalendar.tools.stringToDate(re.data.dates[0]));
+      if (r.data.dates) {
+        $('#form-hours').html(r.data.html.calendar);
+        var elements = {
+          calendar: $('.booking-calendar')[0],
+          events: $('.booking-events')[0]
+        };
+        console.log(elements);
+        elements.title = document.createElement("div");
+        elements.title.className = "title";
+        elements.events.appendChild(elements.title);
+        elements.subtitle = document.createElement("div");
+        elements.subtitle.className = "subtitle";
+        elements.events.appendChild(elements.subtitle);
+        elements.list = document.createElement("div");
+        elements.list.className = "list";
+        elements.events.appendChild(elements.list);
+        calendar = jsCalendar.new(elements.calendar, r.data.dates[0], {
+          "navigatorPosition": "right",
+          "monthFormat": "month YYYY",
+          "dayFormat": "DDD",
+          "firstDayOfTheWeek": "2",
+          "language": "no"
         });
-      });
+        calendar.select(r.data.dates);
+        var events = r.data.hours;
+        var date_format = "DD/MM/YYYY";
+        var showEvents = function(date){
+          // Date string
+          var id = jsCalendar.tools.dateToString(date, date_format, "no");
+          // Set date - allerede satt
+          //current = new Date(date.getTime());
+          // Set title
+          elements.title.textContent = id;
+          // Clear old events
+          elements.list.innerHTML = "";
+          // Add events on list
+          if (events.hasOwnProperty(id) && events[id].length) {
+            // Number of events
+            elements.subtitle.textContent = events[id].length + " " + ((events[id].length > 1) ? "ledige timer" : "ledig time");
+            var div;
+            var link;
+            // For each event
+            for (var i = 0; i < events[id].length; i++) {
+              div = document.createElement("div");
+              link = document.createElement("span");
+              div.dataset.starttime = events[id][i].returnvalue;
+              div.className = "event-item";
+              //div.textContent = (i + 1) + ". " + events[id][i].formatted;
+              div.textContent = events[id][i].formatted;
+              link.textContent = 'Velg tidspunkt';
+              link.style.float = 'right';
+              elements.list.appendChild(div);
+              div.appendChild(link);
+            }
+          } else {
+            elements.subtitle.textContent = "Ingen ledige timer";
+          }
+        };
+        showEvents(jsCalendar.tools.stringToDate(r.data.dates[0]));
+        calendar.onDateClick(function (e, d) {
+          showEvents(d);
+          if (calendar.isSelected(d)) {
+            calendar.set(d);
+            $('[data-date="' + jsCalendar.tools.dateToString(d, 'DD/MM/yyyy') + '"]').show();
+          }
+        });
+        calendar.onMonthChange(function (event, date) {
+          send.date = date.toISOString();
+          $.post(ajax.url, send, function (re) {
+            calendar.select(re.data.dates);
+            calendar.set(re.data.dates[0]);
+            showEvents(jsCalendar.tools.stringToDate(re.data.dates[0]));
+          });
+        });
+      } else {
+        alert('Fant ingen ledige datoer');
+      }
     });
   });
 
