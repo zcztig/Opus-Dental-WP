@@ -62,6 +62,9 @@
     $.post(ajax.url, send, function(r) {
       console.log('Dette får vi i retur');
       console.log(r);
+      if (r.data.dates = false) {
+        return;
+      }
       $('#form-hours').html(r.data.html.calendar);
       var elements = {
         calendar: $('.booking-calendar')[0],
