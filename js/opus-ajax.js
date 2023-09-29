@@ -67,6 +67,7 @@
         calendar: $('.booking-calendar')[0],
         events: $('.booking-events')[0]
       };
+      console.log(elements);
       elements.title = document.createElement("div");
       elements.title.className = "title";
       elements.events.appendChild(elements.title);
