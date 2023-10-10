@@ -18,4 +18,8 @@
 </div>
 <div class="booking-events"></div>
 <div class="clear"></div>
-<p>Finner du ikke et tidspunkt som passer? Ring oss gjerne på tlf 909 00 909 så finner vi ut av det sammen.</p>
+<?php if (get_option('opus_api_phone')): ?>
+  <p>Finner du ikke et tidspunkt som passer? Ring oss gjerne på tlf <?php echo get_option('opus_api_phone'); ?> så finner vi ut av det sammen.</p>
+<?php else: ?>
+  <p>Finner du ikke et tidspunkt som passer? Ring oss i stedet, så finner vi ut av det sammen.</p>
+<?php endif; ?>
