@@ -38,6 +38,19 @@ add_settings_field(
 );
 register_setting('opus-settings', 'opus_api_signature');
 
+//Mailsignatur
+add_settings_field(
+  'opus_api_phone',
+  'Telefonnummer for notis',
+  'opus_api_phone_cb',
+  'opus-settings',
+  'opus_api_settings',
+  [
+    'placeholder' => 'Skriv telefonnummer'
+  ]
+);
+register_setting('opus-settings', 'opus_api_phone');
+
 //Behandlinger (reserve)
 add_settings_field(
     'opus_fallback_treatments',

@@ -29,6 +29,13 @@ function opus_api_signature_cb() {
     wp_editor($signature, 'opus_api_signature', );
 }
 
+function opus_api_phone_cb($args)
+{ ?>
+    <input type="text" class="regular-text" name="opus_api_phone" id="opus_api_phone"
+	value="<?php echo get_option('opus_api_phone'); ?>"
+	placeholder="<?php echo $args['placeholder']; ?>"><?php
+}
+
 function opus_clinicians_preferred_order_cb($args)
 {
     $order = get_option('opus_clinicians_preferred_order'); ?>
