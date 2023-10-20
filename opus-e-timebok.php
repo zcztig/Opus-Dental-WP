@@ -262,6 +262,9 @@ function send_opus_get_request($request = null, $query_args = [])
     if (200 == wp_remote_retrieve_response_code($http)) {
         return json_decode(wp_remote_retrieve_body($http));
     }
+    if ($request == 'treatments') {
+        return $http;
+    }
     if (current_user_can('update_core')) {
         return $http;
     }
